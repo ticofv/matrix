@@ -9,20 +9,23 @@ export default function Navbar() {
 
   const activo = (ruta: string) =>
     location.pathname === ruta
-      ? 'text-amber-400'
-      : 'text-zinc-300 hover:text-white transition-colors duration-200'
+      ? 'text-amber-600 font-medium'
+      : 'text-zinc-700 hover:text-zinc-900 transition-colors duration-200'
 
   return (
-    <nav className="bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800 sticky top-0 z-50">
+    <nav className="bg-white border-b border-zinc-100 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 bg-amber-400 rounded-sm flex items-center justify-center">
-            <span className="text-zinc-950 font-bold text-sm">C</span>
-          </div>
+          <img
+            src="/public/footer-widget-logo.png"
+            alt="Logo CTP Dulce Nombre"
+            className="h-10 w-auto object-contain"
+          />
           <div>
-            <p className="text-white font-semibold text-sm leading-none tracking-wide">CTP Dulce Nombre</p>
-            <p className="text-amber-400 text-xs tracking-widest uppercase mt-0.5">Diurno · Cartago</p>
+            <p className="text-zinc-900 font-semibold text-sm leading-none tracking-wide">Colegio Técnico Profesional de Dulce Nombre</p>
+            <p className="text-amber-500 text-xs tracking-widest uppercase mt-0.5">Diurno · Cartago</p>
           </div>
         </Link>
 
@@ -34,7 +37,7 @@ export default function Navbar() {
             <button
               onClick={() => setDesplegableAbierto(!desplegableAbierto)}
               onBlur={() => setTimeout(() => setDesplegableAbierto(false), 150)}
-              className="text-zinc-300 hover:text-white transition-colors duration-200 flex items-center gap-1"
+              className="text-zinc-700 hover:text-zinc-900 transition-colors duration-200 flex items-center gap-1"
             >
               Especialidades
               <svg className={`w-3 h-3 transition-transform ${desplegableAbierto ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -43,12 +46,12 @@ export default function Navbar() {
             </button>
 
             {desplegableAbierto && (
-              <div className="absolute top-8 left-0 bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl w-72 py-2 z-50">
+              <div className="absolute top-8 left-0 bg-white border border-zinc-100 rounded-xl shadow-lg shadow-zinc-100/80 w-72 py-2 z-50">
                 {especialidades.map(e => (
                   <Link
                     key={e.id}
                     to={e.ruta}
-                    className="flex items-center gap-3 px-4 py-2.5 text-zinc-300 hover:text-white hover:bg-zinc-800 transition-colors text-sm"
+                    className="flex items-center gap-3 px-4 py-2.5 text-zinc-700 hover:text-zinc-900 hover:bg-zinc-50 transition-colors text-sm"
                   >
                     <span className="text-lg">{e.icono}</span>
                     <span>{e.nombre}</span>
@@ -64,7 +67,7 @@ export default function Navbar() {
 
         {/* Hamburger */}
         <button
-          className="md:hidden text-zinc-300 hover:text-white"
+          className="md:hidden text-zinc-400 hover:text-zinc-900"
           onClick={() => setMenuAbierto(!menuAbierto)}
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -78,16 +81,16 @@ export default function Navbar() {
 
       {/* Mobile */}
       {menuAbierto && (
-        <div className="md:hidden bg-zinc-900 border-t border-zinc-800 px-6 py-4 flex flex-col gap-1">
-          <Link to="/" onClick={() => setMenuAbierto(false)} className="text-zinc-300 py-2 text-sm hover:text-white">Inicio</Link>
-          <p className="text-zinc-600 text-xs uppercase tracking-widest mt-2 mb-1">Especialidades</p>
+        <div className="md:hidden bg-white border-t border-zinc-100 px-6 py-4 flex flex-col gap-1">
+          <Link to="/" onClick={() => setMenuAbierto(false)} className="text-zinc-500 py-2 text-sm hover:text-zinc-900">Inicio</Link>
+          <p className="text-zinc-300 text-xs uppercase tracking-widest mt-2 mb-1">Especialidades</p>
           {especialidades.map(e => (
-            <Link key={e.id} to={e.ruta} onClick={() => setMenuAbierto(false)} className="text-zinc-400 py-1.5 text-sm pl-2 hover:text-white flex items-center gap-2">
+            <Link key={e.id} to={e.ruta} onClick={() => setMenuAbierto(false)} className="text-zinc-400 py-1.5 text-sm pl-2 hover:text-zinc-900 flex items-center gap-2">
               <span>{e.icono}</span> {e.nombre}
             </Link>
           ))}
-          <Link to="/galeria" onClick={() => setMenuAbierto(false)} className="text-zinc-300 py-2 text-sm border-t border-zinc-800 mt-2 hover:text-white">Galería</Link>
-          <Link to="/acerca" onClick={() => setMenuAbierto(false)} className="text-zinc-300 py-2 text-sm hover:text-white">Acerca del Colegio</Link>
+          <Link to="/galeria" onClick={() => setMenuAbierto(false)} className="text-zinc-500 py-2 text-sm border-t border-zinc-100 mt-2 hover:text-zinc-900">Galería</Link>
+          <Link to="/acerca" onClick={() => setMenuAbierto(false)} className="text-zinc-500 py-2 text-sm hover:text-zinc-900">Acerca del Colegio</Link>
         </div>
       )}
     </nav>
