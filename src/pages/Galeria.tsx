@@ -1,38 +1,53 @@
 const imagenes = [
-  { titulo: 'Taller de Dibujo Técnico', emoji: '📐', desc: 'Estudiantes trabajando en proyectos de edificaciones' },
-  { titulo: 'Laboratorio de Ciberseguridad', emoji: '🔐', desc: 'Práctica de seguridad en redes y sistemas' },
-  { titulo: 'Aula de Contabilidad', emoji: '📊', desc: 'Gestión financiera y sistemas contables' },
-  { titulo: 'Lab de Redes', emoji: '🌐', desc: 'Configuración de routers, switches y servidores' },
-  { titulo: 'Centro Logístico', emoji: '🚚', desc: 'Simulación de procesos de distribución' },
-  { titulo: 'Desarrollo Móvil', emoji: '📱', desc: 'Creación de apps para Android e iOS' },
-  { titulo: 'Área Comercial', emoji: '💼', desc: 'Técnicas de ventas y atención al cliente' },
-  { titulo: 'Graduación', emoji: '🎓', desc: 'Ceremonia de graduación de técnicos profesionales' },
-  { titulo: 'Actividades Institucionales', emoji: '🏫', desc: 'Eventos y actividades del colegio' },
+  { titulo: 'Dibujo y Modelo de Edificaciones', src: '/dibujo.jpg', desc: 'Diseño arquitectónico y lectura de planos técnicos' },
+  { titulo: 'Ciberseguridad', src: '/ciberseguridad.png', desc: 'Práctica de seguridad en redes y sistemas' },
+  { titulo: 'Contabilidad', src: '/conta.jpg', desc: 'Gestión financiera y sistemas contables' },
+  { titulo: 'Logística', src: '/logistica.jpg', desc: 'Simulación de procesos de distribución' },
+  { titulo: 'Desarrollo de Aplicaciones Móviles', src: '/desarrollo.png', desc: 'Creación de apps para Android e iOS' },
+  { titulo: 'Ejecutivo Comercial', src: '/ejecutivo.jpg', desc: 'Técnicas de ventas y atención al cliente' },
+  { titulo: 'Electrónica', src: '/electronica.jpg', desc: 'Montaje y mantenimiento de circuitos electrónicos' },
 ]
 
 export default function Galeria() {
   return (
-    <main className="max-w-7xl mx-auto px-6 py-16">
-      <h1 className="text-4xl font-bold text-blue-900 mb-2">Galería</h1>
-      <div className="w-16 h-1 bg-yellow-400 mb-10 rounded"></div>
+    <main className="bg-zinc-950 min-h-screen">
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {imagenes.map((img, i) => (
-          <div key={i} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
-            <div className="bg-gradient-to-br from-blue-800 to-blue-600 h-48 flex items-center justify-center text-7xl">
-              {img.emoji}
-            </div>
-            <div className="p-4">
-              <h3 className="font-bold text-blue-900">{img.titulo}</h3>
-              <p className="text-gray-500 text-sm mt-1">{img.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <section className="border-b border-zinc-800 px-6 py-20">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-amber-400 text-xs tracking-[0.3em] uppercase mb-3">Nuestra institución</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Galería</h1>
+          <div className="w-12 h-px bg-amber-400 mb-6"></div>
+          <p className="text-zinc-400 text-lg font-light leading-relaxed max-w-2xl">
+            Un vistazo a los espacios, laboratorios y actividades del CTP Dulce Nombre Diurno.
+          </p>
+        </div>
+      </section>
 
-      <p className="text-center text-gray-400 text-sm mt-10">
-        * Las imágenes reales del colegio pueden agregarse reemplazando los emojis con etiquetas &lt;img&gt;
-      </p>
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {imagenes.map((img, i) => (
+            <div
+              key={i}
+              className="group bg-zinc-900 border border-zinc-800 hover:border-amber-400/40 rounded-sm overflow-hidden transition-all duration-300"
+            >
+              <div className="h-56 overflow-hidden bg-zinc-800">
+                <img
+                  src={img.src}
+                  alt={img.titulo}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="text-white font-semibold text-sm mb-1 group-hover:text-amber-400 transition-colors">
+                  {img.titulo}
+                </h3>
+                <p className="text-zinc-500 text-xs leading-relaxed">{img.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
     </main>
   )
 }

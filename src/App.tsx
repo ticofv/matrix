@@ -6,12 +6,12 @@ import DibujoEdificaciones from './pages/especialidades/DibujoEdificaciones'
 import Ciberseguridad from './pages/especialidades/Ciberseguridad'
 import Contabilidad from './pages/especialidades/Contabilidad'
 import RedesSoporte from './pages/especialidades/RedesSoporte'
-import Logistica from './pages/especialidades/Logistica'
 import DesarrolloMovil from './pages/especialidades/DesarrolloMovil'
 import EjecutivoComercial from './pages/especialidades/EjecutivoComercial'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ChatBot from './components/ChatBot'
+import Electronica from './pages/especialidades/Electronica'
 
 function App() {
   return (
@@ -25,9 +25,9 @@ function App() {
         <Route path="/especialidades/ciberseguridad" element={<Ciberseguridad />} />
         <Route path="/especialidades/contabilidad" element={<Contabilidad />} />
         <Route path="/especialidades/redes" element={<RedesSoporte />} />
-        <Route path="/especialidades/logistica" element={<Logistica />} />
         <Route path="/especialidades/movil" element={<DesarrolloMovil />} />
         <Route path="/especialidades/comercial" element={<EjecutivoComercial />} />
+        <Route path="/especialidades/electronica" element={<Electronica />} />
       </Routes>
       <ChatBot />
       <Footer />
