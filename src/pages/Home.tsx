@@ -3,49 +3,70 @@ import { especialidades } from '../data/especialidades'
 
 export default function Home() {
   return (
-    <main className="bg-white min-h-screen">
+    <main style={{ fontFamily: "'DM Sans', sans-serif", background: '#0f0e0c', color: '#e8e0d0', minHeight: '100vh' }}>
 
       {/* Hero */}
-      <section
-        className="relative min-h-[90vh] flex items-center justify-center text-center px-6 overflow-hidden"
-        style={{
-          backgroundImage: 'url(/imagenes/hero.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        {/* Overlay claro */}
-        <div className="absolute inset-0 bg-white/80 backdrop-blur-[1px]"></div>
+      <section className="relative flex items-center justify-center text-center overflow-hidden" style={{ minHeight: '90vh', background: '#0f0e0c' }}>
+
+        {/* Grid decorativo */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'linear-gradient(rgba(251,191,36,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(251,191,36,0.04) 1px, transparent 1px)',
+          backgroundSize: '40px 40px'
+        }} />
+
+        {/* Glow ámbar */}
+        <div className="absolute top-0 right-0 pointer-events-none" style={{
+          width: '400px', height: '400px',
+          background: 'radial-gradient(circle at 80% 20%, rgba(251,191,36,0.07) 0%, transparent 60%)'
+        }} />
 
         {/* Decoración lateral */}
-        <div className="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-3">
-          <div className="w-px h-20 bg-amber-300"></div>
-          <span className="text-amber-400 text-xs tracking-widest uppercase rotate-90 my-4">Cartago</span>
-          <div className="w-px h-20 bg-amber-300"></div>
+        <div className="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-3 opacity-30">
+          <div style={{ width: '1px', height: '48px', background: '#f59e0b' }} />
+          <span style={{ fontSize: '8px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#f59e0b', writingMode: 'vertical-rl' }}>Cartago</span>
+          <div style={{ width: '1px', height: '48px', background: '#f59e0b' }} />
         </div>
 
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <p className="text-amber-500 text-xs tracking-[0.3em] uppercase mb-6 font-medium">
-            Colegio Técnico Profesional · Costa Rica
-          </p>
-          <h1 className="text-5xl md:text-7xl font-bold text-zinc-900 leading-tight mb-6">
+        {/* Contenido */}
+        <div className="relative z-10 max-w-2xl mx-auto px-6">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div style={{ width: '24px', height: '1px', background: '#f59e0b', opacity: 0.5 }} />
+            <p style={{ fontSize: '10px', letterSpacing: '0.35em', textTransform: 'uppercase', color: '#f59e0b', fontWeight: 500 }}>
+              Colegio Técnico Profesional · Costa Rica
+            </p>
+            <div style={{ width: '24px', height: '1px', background: '#f59e0b', opacity: 0.5 }} />
+          </div>
+
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2.8rem, 7vw, 5rem)', fontWeight: 900, lineHeight: 1.05, color: '#f5ede0', marginBottom: '0.5rem' }}>
             Dulce Nombre<br />
-            <span className="text-amber-400">Diurno</span>
+            <span style={{ color: '#f59e0b' }}>Diurno</span>
           </h1>
-          <div className="w-16 h-0.5 bg-amber-400 mx-auto mb-6"></div>
-          <p className="text-zinc-500 text-lg md:text-xl font-light max-w-xl mx-auto mb-10 leading-relaxed">
+
+          <div style={{ width: '40px', height: '2px', background: '#f59e0b', margin: '1.5rem auto', opacity: 0.8 }} />
+
+          <p style={{ color: '#9d9080', fontSize: '1.05rem', fontWeight: 300, lineHeight: 1.75, maxWidth: '420px', margin: '0 auto 2.5rem' }}>
             Formamos técnicos profesionales con las habilidades que el mercado laboral exige.
           </p>
-          <div className="flex items-center justify-center gap-4 flex-wrap">
+
+          <div className="flex items-center justify-center gap-3 flex-wrap">
             <Link
               to="/acerca"
-              className="bg-amber-400 text-white font-semibold px-8 py-3 rounded-sm hover:bg-amber-500 transition-colors tracking-wide text-sm shadow-sm shadow-amber-200"
+              style={{
+                background: '#f59e0b', color: '#1a1208', fontWeight: 600,
+                fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase',
+                padding: '0.85rem 2.25rem', textDecoration: 'none', display: 'inline-block'
+              }}
             >
               Conoce el colegio
             </Link>
             <Link
               to="/galeria"
-              className="border border-zinc-200 text-zinc-600 font-medium px-8 py-3 rounded-sm hover:border-zinc-400 hover:text-zinc-900 transition-colors text-sm"
+              style={{
+                background: 'transparent', color: '#9d9080',
+                fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase',
+                padding: '0.85rem 2.25rem', border: '1px solid #2a2620',
+                textDecoration: 'none', display: 'inline-block'
+              }}
             >
               Ver galería
             </Link>
@@ -54,67 +75,93 @@ export default function Home() {
       </section>
 
       {/* Especialidades */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
-        <div className="flex items-end justify-between mb-14">
-          <div>
-            <p className="text-amber-500 text-xs tracking-[0.3em] uppercase mb-3">Lo que ofrecemos</p>
-            <h2 className="text-4xl font-bold text-zinc-900">Especialidades<br />Técnicas</h2>
+      <section className="px-6 py-24" style={{ background: '#0f0e0c' }}>
+        <div className="max-w-7xl mx-auto">
+
+          {/* Header sección */}
+          <div className="flex items-end justify-between mb-14 gap-6">
+            <div>
+              <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#f59e0b', fontWeight: 500, marginBottom: '0.6rem' }}>
+                Lo que ofrecemos
+              </p>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.2rem', fontWeight: 700, color: '#f5ede0', lineHeight: 1.1 }}>
+                Especialidades<br />Técnicas
+              </h2>
+            </div>
+            <p className="hidden md:block text-right" style={{ fontSize: '0.8rem', color: '#5a5248', maxWidth: '200px', lineHeight: 1.7 }}>
+              Siete carreras técnicas diseñadas para insertarte al mercado laboral desde el colegio.
+            </p>
           </div>
-          <div className="hidden md:block w-px h-16 bg-zinc-100"></div>
-          <p className="hidden md:block text-zinc-400 text-sm max-w-xs text-right leading-relaxed">
-            Siete carreras técnicas diseñadas para insertarte al mercado laboral desde el colegio.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {especialidades.map((e) => (
-            <Link
-              key={e.id}
-              to={e.ruta}
-              className="group bg-white border border-zinc-100 hover:border-amber-300 hover:shadow-md hover:shadow-amber-50 rounded-sm overflow-hidden transition-all duration-300"
-            >
-              {/* Imagen */}
-              <div className="h-40 overflow-hidden bg-zinc-50">
-                {e.imagen ? (
-                  <img
-                    src={e.imagen}
-                    alt={e.nombre}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-4xl bg-amber-50">
-                    {e.icono}
-                  </div>
-                )}
-              </div>
+          {/* Grid de cards */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1px', background: '#1e1c18' }}>
+            {especialidades.map((e, i) => (
+              <Link
+                key={e.id}
+                to={e.ruta}
+                className="group"
+                style={{ background: '#141210', padding: '1.75rem 1.5rem', textDecoration: 'none', display: 'block', position: 'relative', overflow: 'hidden', transition: 'background 0.2s' }}
+                onMouseEnter={ev => ev.currentTarget.style.background = '#1a1814'}
+                onMouseLeave={ev => ev.currentTarget.style.background = '#141210'}
+              >
+                {/* Número */}
+                <span style={{ position: 'absolute', top: '1rem', right: '1rem', fontSize: '0.65rem', color: '#2a2620', fontWeight: 600, fontFamily: "'Playfair Display', serif" }}>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
 
-              {/* Info */}
-              <div className="p-5">
-                <span className="text-xl mb-2 block">{e.icono}</span>
-                <h3 className="text-zinc-900 font-semibold text-sm leading-snug mb-2 group-hover:text-amber-500 transition-colors">
+                {/* Línea top hover */}
+                <TopLine />
+
+                {/* Imagen o ícono */}
+                <div style={{ height: '100px', marginBottom: '1rem', overflow: 'hidden', background: '#1a1814' }}>
+                  {e.imagen ? (
+                    <img src={e.imagen} alt={e.nombre} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
+                  ) : (
+                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem' }}>
+                      {e.icono}
+                    </div>
+                  )}
+                </div>
+
+                <span style={{ fontSize: '1.4rem', display: 'block', marginBottom: '0.6rem' }}>{e.icono}</span>
+                <h3 style={{ fontSize: '0.82rem', fontWeight: 500, color: '#e8e0d0', lineHeight: 1.35, marginBottom: '0.5rem' }}>
                   {e.nombre}
                 </h3>
-                <p className="text-zinc-400 text-xs leading-relaxed line-clamp-2">{e.descripcion}</p>
-                <div className="mt-4 flex items-center gap-2 text-amber-500 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                  Ver especialidad
-                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                <p style={{ fontSize: '0.72rem', color: '#5a5248', lineHeight: 1.55 }}>
+                  {e.descripcion}
+                </p>
+                <div style={{ marginTop: '1rem', fontSize: '0.65rem', color: '#f59e0b', letterSpacing: '0.08em', fontWeight: 500 }}>
+                  VER →
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Banner CTA */}
-      <section className="border-t border-zinc-100 bg-amber-50 py-20 px-6 text-center">
-        <p className="text-amber-500 text-xs tracking-[0.3em] uppercase mb-4">Asistente virtual</p>
-        <h2 className="text-3xl font-bold text-zinc-900 mb-3">¿Tenés dudas?</h2>
-        <p className="text-zinc-500 mb-2">Usá el chat en la esquina inferior derecha.</p>
-        <p className="text-zinc-400 text-sm">Disponible 24/7 para responder sobre nuestras especialidades.</p>
+      <section className="text-center px-6 py-20" style={{ background: '#141210', borderTop: '1px solid #1e1c18' }}>
+        <p style={{ fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#f59e0b', marginBottom: '1rem', fontWeight: 500 }}>
+          Asistente virtual
+        </p>
+        <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: 700, color: '#f5ede0', marginBottom: '0.75rem' }}>
+          ¿Tenés dudas?
+        </h2>
+        <p style={{ fontSize: '0.85rem', color: '#5a5248', lineHeight: 1.7 }}>
+          Usá el chat en la esquina inferior derecha.<br />
+          Disponible 24/7 para responder sobre nuestras especialidades.
+        </p>
       </section>
 
     </main>
+  )
+}
+
+// Línea ámbar top que aparece en hover — componente separado para evitar inline con estados
+function TopLine() {
+  return (
+    <style>{`
+      .group:hover .top-line { transform: scaleX(1) !important; }
+    `}</style>
   )
 }
